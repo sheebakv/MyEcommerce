@@ -1,0 +1,30 @@
+{% extends 'store/main.html' %} 
+{% load static %} 
+{% block content %}
+<div class="row">
+  <div class="col-lg-12">
+    <div class="box-element">
+      <a class="btn btn-outline-dark" href="{% url 'store' %}"
+        >&#x2190; Continue Shopping</a>
+
+      <br />
+    </div>
+  </div>
+</div>
+<div class="row">
+    {% if data %}
+    {% for product in data %}
+    <div class="col-lg-4">
+        <a href="{% url 'product_details' product.id %}"><img class="thumbnail" src="{{product.imageURL}}"></a>
+        <div class="box-element product">
+            <h6><strong>{{product.name}}</strong></h6>
+            <h4 style="display: inline-block; float: right"><strong>${{product.price}}</strong></h4>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="col-lg-4"><h4>No results found!</h4>
+    </div>
+    {% endif %}
+</div>
+{% endblock content %}
