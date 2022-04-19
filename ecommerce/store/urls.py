@@ -12,6 +12,8 @@ urlpatterns = [
 	path('product/<product_id>',views.product_details,name='product_details'),
 	path('update_item/', views.updateItem, name="update_item"),
 	path('review/<product_id>',views.reviewAdd,name="review"),
+	path('process_order/', views.processOrder, name="process_order"),
+	path('ajax/load-states/', views.load_states, name='ajax_load_states'), # AJAX
 
 ]
 
