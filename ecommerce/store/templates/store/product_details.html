@@ -19,10 +19,21 @@
       <h5>{{product_details.name}}</h5>
       <hr />
       <p>{{product_details.name}}</p>
-      <p>Price:${{product_details.price|floatformat:2}}</p>
+      <p>Price:${{product_details.price}}</p>
       <hr />
       <h6>About Item:</h6>
       <p>{{product_details.description}}</p>
+
+      {% if sizes %}
+        <p>Size:</p>
+        <p>
+        <select name="size">
+          {% for size in sizes %}
+          <option value="{{ size.size__id }}">{{ size.size__title }}</option>
+          {% endfor %}
+        </select> 
+      </p>
+        {% endif %}
       <p>
         <button
           data-product="{{ product_details.id }}"
@@ -31,6 +42,7 @@
         >
           Add to Cart
         </button>
+      </form>
       </p>
     </div>
     <div>
@@ -126,7 +138,7 @@
           <p>You must purchase this product to post a review.</p>
         {% endif %}
       {% else %}
-      <p>You must be logged in to post a review. <span><a href="{% url 'users/login' %}">Login now</a></span></p>
+      <p>You must be logged in to post a review. <span><a href="{% url 'login' %}">Login now</a></span></p>
       {% endif %}
 
 
